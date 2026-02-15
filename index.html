@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>For Chaima ✨</title>
+
   <style>
     :root{
       --bg1:#0b1020; --bg2:#1a1034;
@@ -11,49 +12,39 @@
       --border: rgba(255,255,255,.14);
       --text:#f5f6ff; --muted: rgba(245,246,255,.72);
       --accent:#ff5ea8;
-      --pixel: 4px; /* pixel size */
+      --pixel: 4px;
     }
     *{box-sizing:border-box}
     body{
       margin:0; min-height:100vh; display:grid; place-items:center;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-family: system-ui, Arial;
       color:var(--text);
       background:
         radial-gradient(900px 600px at 15% 20%, rgba(255,94,168,.22), transparent 60%),
         radial-gradient(900px 600px at 85% 80%, rgba(138,92,255,.22), transparent 60%),
         linear-gradient(160deg, var(--bg1), var(--bg2));
-      overflow:hidden;
       padding:18px;
     }
-    .wrap{width:min(580px, 100%); position:relative}
+    .wrap{width:min(580px,100%)}
     .card{
       background:var(--card);
       border:1px solid var(--border);
-      backdrop-filter: blur(10px);
       border-radius:22px;
       padding:22px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      box-shadow:0 18px 60px rgba(0,0,0,.35);
     }
-    .top{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-bottom:14px;
-    }
+    .top{display:flex;justify-content:space-between;margin-bottom:14px}
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;border-radius:999px;
       border:1px solid var(--border);
-      background: rgba(0,0,0,.18);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:13px;
-      color:var(--muted);
-      user-select:none;
+      font-size:13px;color:var(--muted)
     }
-    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(255,94,168,.7)}
-    h1{margin:0 0 8px; font-size:28px; letter-spacing:.2px}
-    p{margin:0 0 14px; color:var(--muted); line-height:1.5}
+    h1{margin:0 0 8px;font-size:28px}
+    p{margin:0 0 14px;color:var(--muted)}
     .box{
       border:1px solid var(--border);
-      background: rgba(0,0,0,.16);
+      background:rgba(0,0,0,.16);
       border-radius:18px;
       padding:16px;
       min-height:140px;
@@ -62,301 +53,107 @@
       justify-content:center;
       text-align:center;
       font-size:18px;
-      line-height:1.45;
     }
-    .quote{animation: pop .18s ease-out}
-    @keyframes pop{from{transform:scale(.98);opacity:.6}to{transform:scale(1);opacity:1}}
-    .actions{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:14px;
-    }
+    .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
     button{
-      appearance:none; border:0; cursor:pointer;
       padding:12px 14px;
       border-radius:14px;
+      border:0;
+      cursor:pointer;
       font-weight:700;
-      font-size:14px;
-      transition: transform .08s ease, filter .2s ease;
-      user-select:none;
     }
-    button:active{transform:translateY(1px)}
     .primary{
-      background: linear-gradient(135deg, var(--accent), #8a5cff);
+      background:linear-gradient(135deg,var(--accent),#8a5cff);
       color:white;
-      box-shadow: 0 14px 34px rgba(255,94,168,.18);
     }
     .secondary{
-      background: rgba(255,255,255,.08);
+      background:rgba(255,255,255,.08);
       border:1px solid var(--border);
-      color: var(--text);
+      color:var(--text);
     }
-
-    /* ===== Bottom message row ===== */
     .bottom{
       margin-top:14px;
       display:flex;
-      align-items:center;
-      justify-content:space-between;
       gap:12px;
-      flex-wrap:wrap;
-    }
-    .dad-quote{
-      display:flex;
       align-items:center;
-      gap:12px;
-      padding:12px 14px;
-      border-radius:16px;
       border:1px solid var(--border);
-      background: rgba(0,0,0,.14);
-      color: rgba(245,246,255,.85);
+      border-radius:16px;
+      padding:12px;
+      background:rgba(0,0,0,.14);
       font-size:13px;
-      line-height:1.35;
-      flex: 1 1 360px;
-    }
-    .dad-quote strong{color: var(--text)}
-    .footer-link{
-      font-size:12px;
-      color: rgba(245,246,255,.55);
-      flex: 0 0 auto;
-    }
-    a{color:rgba(245,246,255,.8); text-decoration:none; border-bottom:1px dashed rgba(245,246,255,.35)}
-
-    /* ===== Confetti ===== */
-    .confetti{
-      position:fixed; inset:0; pointer-events:none; overflow:hidden;
-    }
-    .c{
-      position:absolute; width:10px; height:14px; opacity:.95;
-      top:-20px;
-      border-radius:2px;
-      animation: fall linear forwards;
-    }
-    @keyframes fall{
-      to{transform: translateY(120vh) rotate(720deg); opacity:1}
     }
 
-    /* ===== Pixel flower animation ===== */
+    /* Pixel flower */
     .pixel-flower{
-      width: calc(var(--pixel) * 14);
-      height: calc(var(--pixel) * 14);
-      image-rendering: pixelated;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
-      flex: 0 0 auto;
-    }
-    .pixel-flower .grid{
-      width:100%;
-      height:100%;
+      width:calc(var(--pixel)*14);
+      height:calc(var(--pixel)*14);
       display:grid;
-      grid-template-columns: repeat(14, var(--pixel));
-      grid-template-rows: repeat(14, var(--pixel));
-      gap:0;
-      transform-origin: 50% 60%;
-      animation: bob 1.8s ease-in-out infinite;
+      grid-template-columns:repeat(14,var(--pixel));
     }
-    @keyframes bob{
-      0%,100%{transform: translateY(0) rotate(-1deg) scale(1)}
-      50%{transform: translateY(-2px) rotate(1deg) scale(1.02)}
-    }
-    .px{
-      width:var(--pixel);
-      height:var(--pixel);
-      background: transparent;
-    }
-    .px.pet{ background:#ff5ea8; animation: bloom 2.4s ease-in-out infinite; }
-    .px.pet2{ background:#ff89c2; animation: bloom 2.4s ease-in-out infinite; animation-delay:.08s;}
-    .px.mid{ background:#ffd36b; animation: shine 1.6s ease-in-out infinite; }
-    .px.mid2{ background:#ffbf3f; animation: shine 1.6s ease-in-out infinite; animation-delay:.12s;}
-    .px.stem{ background:#3ddc97; }
-    .px.stem2{ background:#27b77a; }
-    .px.leaf{ background:#7cffd1; animation: leaf 2.0s ease-in-out infinite; }
-    .px.leaf2{ background:#53f2c0; animation: leaf 2.0s ease-in-out infinite; animation-delay:.1s;}
-
-    @keyframes bloom{
-      0%,100%{filter:brightness(1); transform:scale(1)}
-      50%{filter:brightness(1.18); transform:scale(1.04)}
-    }
-    @keyframes shine{
-      0%,100%{filter:brightness(1)}
-      50%{filter:brightness(1.25)}
-    }
-    @keyframes leaf{
-      0%,100%{filter:brightness(1)}
-      50%{filter:brightness(1.15)}
-    }
+    .px{width:var(--pixel);height:var(--pixel)}
+    .pet{background:#ff5ea8}
+    .pet2{background:#ff89c2}
+    .mid{background:#ffd36b}
+    .mid2{background:#ffbf3f}
+    .stem{background:#3ddc97}
+    .stem2{background:#27b77a}
+    .leaf{background:#7cffd1}
+    .leaf2{background:#53f2c0}
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="top">
-        <div class="badge"><span class="dot"></span> Valentine Mode</div>
-        <div class="badge" id="dateBadge">—</div>
-      </div>
+<div class="wrap">
+  <div class="card">
 
-      <h1>Hey <span id="herName">Chaima</span> ✨</h1>
-      <p>I made a tiny compliment generator. Tap the button whenever you want a good vibe.</p>
+    <div class="top">
+      <div class="badge">Valentine Mode 💖</div>
+      <div class="badge" id="date"></div>
+    </div>
 
-      <div class="box">
-        <div id="quote" class="quote">Tap “Generate” 💖</div>
-      </div>
+    <h1>Hey Chaima ✨</h1>
+    <p>I made a tiny compliment generator.</p>
 
-      <div class="actions">
-        <button class="primary" id="genBtn">Generate ✨</button>
-        <button class="secondary" id="copyBtn">Copy this one</button>
-        <button class="secondary" id="noteBtn">A small note</button>
-      </div>
+    <div class="box" id="quote">Tap “Generate” 💫</div>
 
-      <!-- Bottom quote + pixel flower -->
-      <div class="bottom">
-        <div class="dad-quote">
-          <div class="pixel-flower" aria-hidden="true">
-            <div class="grid" id="flowerGrid"></div>
-          </div>
-          <div>
-            <strong>Mindset:</strong><br>
-            “If I want something, I go for it.<br>
-            If I fall, I stop — then I try again.”
-          </div>
-        </div>
-        <div class="footer-link"><a href="#" id="resetLink">Reset</a></div>
+    <div class="actions">
+      <button class="primary" id="gen">Generate ✨</button>
+      <button class="secondary" id="note">A small note</button>
+    </div>
+
+    <div class="bottom">
+      <div class="pixel-flower" id="flower"></div>
+      <div>
+        <strong>Mindset:</strong><br>
+        “If I want something, I go for it.<br>
+        If I fall, I stop — then I try again.”
       </div>
     </div>
+
   </div>
+</div>
 
-  <div class="confetti" id="confetti"></div>
+<script>
+  const COMPLIMENTS = [
+    `If I want something, I go for it.
+And if you tell me to stop, I'll stop — then I’ll try again 🎨`,
+    "Hadi hiya 3emrha ✨",
+    "Safi, rah t9adaw l-jomal 🙂"
+  ];
 
-  <script>
-    // ====== Customize ======
-    const NAME = "Chaima";
-    const COMPLIMENTS = [
-   "If I want something, I go for it.
-and  if u tell me to stop, I'll stop—then I try again  🎨",
-  "Hadi hiya 3emrha ✨",
-  "Safi, rah t9adaw l-jomal 🙂"
-    ];
+  const NOTE =
+    "Real talk: I’ve had a crush on you. If you’re open to it, I’d love to take you out sometime 🙂";
 
-    const NOTE =
-      "Real talk: I’ve had a crush on you. If you’re open to it, I’d love to take you out sometime 🙂";
-    // =======================
+  const quote = document.getElementById("quote");
+  const gen = document.getElementById("gen");
+  const note = document.getElementById("note");
 
-    // init
-    const herName = document.getElementById("herName");
-    const quoteEl = document.getElementById("quote");
-    const dateBadge = document.getElementById("dateBadge");
-    const confetti = document.getElementById("confetti");
-    herName.textContent = NAME;
+  let pool = [...COMPLIMENTS];
 
-    const today = new Date();
-    const opts = { weekday:"short", year:"numeric", month:"short", day:"numeric" };
-    dateBadge.textContent = today.toLocaleDateString(undefined, opts);
+  gen.onclick = () => {
+    if(pool.length === 0) pool = [...COMPLIMENTS];
+    const i = Math.floor(Math.random()*pool.length);
+    quote.textContent = pool.splice(i,1)[0];
+  };
 
-    // random without repeating until all used
-    let pool = [...COMPLIMENTS];
-    function pick(){
-      if(pool.length === 0) pool = [...COMPLIMENTS];
-      const i = Math.floor(Math.random() * pool.length);
-      return pool.splice(i,1)[0];
-    }
-    function setQuote(text){
-      quoteEl.classList.remove("quote");
-      void quoteEl.offsetWidth; // restart animation
-      quoteEl.classList.add("quote");
-      quoteEl.textContent = text;
-    }
-
-    function popConfetti(){
-      const colors = ["#ff5ea8","#8a5cff","#ffd36b","#7cffd1","#ffffff"];
-      for(let i=0;i<40;i++){
-        const el = document.createElement("div");
-        el.className = "c";
-        el.style.left = (Math.random()*100) + "vw";
-        el.style.background = colors[Math.floor(Math.random()*colors.length)];
-        el.style.transform = `translateY(0) rotate(${Math.random()*180}deg)`;
-        el.style.animationDuration = (1.8 + Math.random()*1.4) + "s";
-        el.style.animationDelay = (Math.random()*0.05) + "s";
-        el.style.width = (8 + Math.random()*8) + "px";
-        el.style.height = (10 + Math.random()*10) + "px";
-        confetti.appendChild(el);
-        el.addEventListener("animationend", () => el.remove());
-      }
-    }
-
-    document.getElementById("genBtn").addEventListener("click", () => {
-      setQuote(pick());
-      popConfetti();
-    });
-
-    document.getElementById("copyBtn").addEventListener("click", async () => {
-      const text = quoteEl.textContent.trim();
-      try{
-        await navigator.clipboard.writeText(text);
-        setQuote("Copied ✅");
-        setTimeout(()=>setQuote(text), 800);
-      }catch(e){
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        ta.remove();
-        setQuote("Copied ✅");
-        setTimeout(()=>setQuote(text), 800);
-      }
-    });
-
-    document.getElementById("noteBtn").addEventListener("click", () => {
-      setQuote(NOTE);
-      popConfetti();
-    });
-
-    document.getElementById("resetLink").addEventListener("click", (e) => {
-      e.preventDefault();
-      pool = [...COMPLIMENTS];
-      setQuote("Tap “Generate” 💖");
-    });
-
-    // ===== Pixel flower drawing (14x14) =====
-    // Legend: 0 empty, 1 petal, 2 petal highlight, 3 center, 4 center highlight, 5 stem, 6 stem shade, 7 leaf, 8 leaf highlight
-    const FLOWER = [
-      "00000222200000",
-      "00002211220000",
-      "00021111112000",
-      "00211113311120",
-      "02111134431112",
-      "02111344443112",
-      "00211134431120",
-      "00021113311200",
-      "00002111120000",
-      "00000005000000",
-      "00000005000000",
-      "00000756580000",
-      "00007756588000",
-      "00000005000000"
-    ];
-
-    const grid = document.getElementById("flowerGrid");
-    const classMap = {
-      "0": "",
-      "1": "pet",
-      "2": "pet2",
-      "3": "mid",
-      "4": "mid2",
-      "5": "stem",
-      "6": "stem2",
-      "7": "leaf",
-      "8": "leaf2"
-    };
-
-    for (let r=0; r<FLOWER.length; r++){
-      const row = FLOWER[r];
-      for (let c=0; c<row.length; c++){
-        const cell = document.createElement("div");
-        const key = row[c];
-        cell.className = "px " + (classMap[key] || "");
-        grid.appendChild(cell);
-      }
-    }
-  </script>
-</body>
-</html>
+  note.o
